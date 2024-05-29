@@ -6,7 +6,7 @@ from sine_fit.config import (
 )
 from notes import frequency_to_halftones, map_frequency_to_note_and_scale
 from sine_fit.oscillator import get_n_peaks
-from config import HOP_LENGTH, SAMPLE_RATE
+from config import HOP_LENGTH
 
 def apply_partial_hanning(signal_slice, degree):
     hanning_window = np.hanning(len(signal_slice))
@@ -20,7 +20,7 @@ def glide_between_peaks(start_freq, end_freq, start_amp, end_amp, start_phase, e
     return amplitudes * np.sin(2 * np.pi * frequencies * t + phases)
 
 def generate_output_signal(oscillator_data, sample_rate):
-    time_slice_duration = HOP_LENGTH / SAMPLE_RATE
+    time_slice_duration = HOP_LENGTH / sample_rate
     output_signal = []
     num_slices = len(oscillator_data)
     for time_slice in oscillator_data:

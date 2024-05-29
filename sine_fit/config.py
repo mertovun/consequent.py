@@ -9,9 +9,9 @@ class PeakSelection(Enum):
 NUM_PEAKS = 16  # Number of peaks to fit
 
 # Reconstruction Parameters
-PEAK_SELECTION_STRATEGY = PeakSelection.HIGHEST 
+PEAK_SELECTION_STRATEGY = PeakSelection.RANDOM 
 # TODO: PEAK_OFFSET = 2
-N_PEAKS = 16                     # Number of peaks to select from fits
+N_PEAKS = 8                     # Number of peaks to select from fits
 
 APPLY_HANNING = True            # Apply Hanning window
 HANNING_DEGREE = 0.3            # Degree of Hanning window application
@@ -42,6 +42,6 @@ GLIDE_THRESHOLD_MAX = 36.0  # Halftone threshold for gliding effect among neighb
 GLIDE_THRESHOLD_MIN = 0.0  # Halftone threshold for gliding effect among neighboring peaks
 
 # Low-Pass Filter Parameters
-CUTOFF_FREQUENCY = 2000         # Cutoff frequency for Butterworth LPF
+CUTOFF_FREQUENCY = 2500         # Cutoff frequency for Butterworth LPF
 FILTER_ORDER = 5                # Order of the Butterworth LPF
 
