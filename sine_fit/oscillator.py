@@ -1,8 +1,7 @@
 import random
 from scipy.signal import find_peaks
 import json
-
-from sine_fit.config import NUM_PEAKS, PeakSelection
+from config import PeakSelection
 
 def save_oscillator_data(oscillator_data, output_file):
     with open(output_file, 'w') as f:
@@ -12,14 +11,14 @@ def load_oscillator_data(input_file):
     with open(input_file, 'r') as f:
         return json.load(f)
 
-def extract_oscillator_data(amplitude, phase, frequencies):
+def extract_oscillator_data(amplitude, phase, frequencies, config):
     oscillator_data = []
     for time_slice_index in range(amplitude.shape[1]):
         amplitude_slice = amplitude[:, time_slice_index]
         phase_slice = phase[:, time_slice_index]
 
         peaks, _ = find_peaks(amplitude_slice, height=0.1)
-        sorted_peaks = sorted(peaks, key=lambda peak: amplitude_slice[peak], reverse=True)[:NUM_PEAKS]
+        sorted_peaks = sorted(peaks, key=lambda peak: amplitude_slice[peak], reverse=True)[:config['NUM_PEAKS']]
 
         peak_info = []
         for peak in sorted_peaks:
